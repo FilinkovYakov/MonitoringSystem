@@ -1,0 +1,19 @@
+﻿<div>
+	<h1>Problem</h1>
+	<p>
+		<span>Summary: </span>
+		<input type="text" ng-model="$ctrl.problem.summary" />
+	</p>
+	<p>
+		<span>Description: </span>
+		<input type="text" ng-model="$ctrl.problem.description" />
+	</p>
+	<p>
+		<span>Assegnee:</span>
+		<select ng-model="$ctrl.problem.assegneeid" ng-options="user.id as user.name for user in $ctrl.users track by user.id">
+		</select>
+	</p>
+</div>
+
+<input type="submit" ng-click="$ctrl.add()" class="btn btn-info" value="Create" />
+<a href="#!/problems/" class="btn btn-info">To list problems</a>

@@ -1,0 +1,21 @@
+﻿<div>
+	<h1>Are you want to remove problem?</h1>
+	<p>
+		Id: {{$ctrl.problem.id}}
+	</p>
+	<p>
+		Summary: {{$ctrl.problem.summary}}
+	</p>
+	<p>
+		Description: {{$ctrl.problem.description}}
+	</p>
+	<p>
+		Reporter: {{$ctrl.problem.reporter}}
+	</p>
+	<p>
+		Assignee: {{$ctrl.problem.assignee}}
+	</p>
+</div>
+
+<input type="submit" ng-click="$ctrl.remove()" class="btn btn-info" value="Remove" />
+<a href="#!/problems/" class="btn btn-info">To list problems</a>

@@ -1,0 +1,13 @@
+﻿<div>
+	<h1>List problems</h1>
+	<ul>
+		<li ng-repeat="problem in $ctrl.problems">
+			<span>{{problem.id}} {{problem.summary}}</span>
+			<a href="#!/problem/{{problem.id}}">Details</a>
+			<a href="#!/problem/edit/{{problem.id}}">Edit</a>
+			<a href="#!/problem/remove/{{problem.id}}">Remove</a>
+		</li>
+	</ul>
+</div>
+
+<a href="#!/problem/add" class="btn btn-info">Add problem</a>

@@ -1,0 +1,82 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp1.0</TargetFramework>
+    <PreserveCompilationContext>true</PreserveCompilationContext>
+    <AssemblyName>MonitoringSystem</AssemblyName>
+    <OutputType>Exe</OutputType>
+    <PackageId>MonitoringSystem</PackageId>
+    <RuntimeFrameworkVersion>1.0.4</RuntimeFrameworkVersion>
+    <PackageTargetFallback>$(PackageTargetFallback);dotnet5.6;portable-net45+win8</PackageTargetFallback>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot/app\problem-list\problem-list.template.html" />
+    <Content Remove="wwwroot/app\user-regist\umyp0sdd.22u~" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="wwwroot\app\core\problem\problem.module.js" />
+    <Content Include="wwwroot\app\core\problem\problem.service.js" />
+    <Content Include="wwwroot\app\core\user\user.module.js" />
+    <Content Include="wwwroot\app\core\user\user.service.js" />
+    <Content Include="wwwroot\app\monitoring-system.config.js" />
+    <Content Include="wwwroot\app\monitoring-system.module.js" />
+    <Content Include="wwwroot\app\problem-add\problem-add.component.js" />
+    <Content Include="wwwroot\app\problem-add\problem-add.module.js" />
+    <Content Include="wwwroot\app\problem-add\problem-add.template.html" />
+    <Content Include="wwwroot\app\problem-detail\problem-detail.component.js" />
+    <Content Include="wwwroot\app\problem-detail\problem-detail.module.js" />
+    <Content Include="wwwroot\app\problem-detail\problem-detail.template.html" />
+    <Content Include="wwwroot\app\problem-edit\problem-edit.component.js" />
+    <Content Include="wwwroot\app\problem-edit\problem-edit.module.js" />
+    <Content Include="wwwroot\app\problem-edit\problem-edit.template.html" />
+    <Content Include="wwwroot\app\problem-list\problem-list.component.js" />
+    <Content Include="wwwroot\app\problem-list\problem-list.module.js" />
+    <Content Include="wwwroot\app\problem-list\problem-list.template.html" />
+    <Content Include="wwwroot\app\problem-remove\problem-remove.component.js" />
+    <Content Include="wwwroot\app\problem-remove\problem-delete.module.js" />
+    <Content Include="wwwroot\app\problem-remove\problem-remove.module.js" />
+    <Content Include="wwwroot\app\problem-remove\problem-remove.template.html" />
+    <Content Include="wwwroot\app\user-auth\user-auth.component.js" />
+    <Content Include="wwwroot\app\user-auth\user-auth.module.js" />
+    <Content Include="wwwroot\app\user-auth\user-auth.template.html" />
+    <Content Include="wwwroot\app\user-out\user-out.component.js" />
+    <Content Include="wwwroot\app\user-out\user-out.module.js" />
+    <Content Include="wwwroot\app\user-out\user-out.template.html" />
+    <Content Include="wwwroot\app\user-regist\user-regist.component.js" />
+    <Content Include="wwwroot\app\user-regist\user-regist.module.js" />
+    <Content Include="wwwroot\app\user-regist\user-regist.template.html" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="wwwroot\**\*">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights.AspNetCore" Version="1.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore" Version="1.0.4" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="1.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Routing" Version="1.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.IISIntegration" Version="1.0.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" Version="1.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="1.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="1.0.3" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer.Design" Version="1.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="1.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="1.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="1.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="1.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="1.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="1.0.2" />
+    <PackageReference Include="AngularJS.Core" Version="1.6.2" />
+    <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="1.0.2" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.BrowserLink" Version="1.0.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="1.0.0" />
+  </ItemGroup>
+
+</Project>

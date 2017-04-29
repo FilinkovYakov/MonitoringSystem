@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html ng-app="monitoringSystem">
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Monitoring System</title>
+	<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+	<link href="~/lib/angular/angular-csp.css" rel="stylesheet" />
+</head>
+<body>
+	<div class="container-fluid">
+		<header class="navbar">
+			<div class="container">
+				<div class="navbar-collapse">
+					<user-out></user-out>
+				</div>
+			</div>
+		</header>
+		<section class="container">
+			@RenderBody()
+		</section>
+		<footer class="text-center">
+			<p>&copy; @DateTime.Now.Year - Mirantis</p>
+		</footer>
+	</div>
+
+	<script src="~/lib/jquery/dist/jquery.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="~/lib/angular/angular.js"></script>
+	<script src="~/lib/angular-route/angular-route.js"></script>
+	<script src="~/app/core/problem/problem.module.js"></script>
+	<script src="~/app/core/problem/problem.service.js"></script>
+	<script src="~/app/core/user/user.module.js"></script>
+	<script src="~/app/core/user/user.service.js"></script>
+	<script src="~/app/problem-list/problem-list.module.js"></script>
+	<script src="~/app/problem-list/problem-list.component.js"></script>
+	<script src="~/app/problem-detail/problem-detail.module.js"></script>
+	<script src="~/app/problem-detail/problem-detail.component.js"></script>
+	<script src="~/app/problem-add/problem-add.module.js"></script>
+	<script src="~/app/problem-add/problem-add.component.js"></script>
+	<script src="~/app/problem-edit/problem-edit.module.js"></script>
+	<script src="~/app/problem-edit/problem-edit.component.js"></script>
+	<script src="~/app/user-auth/user-auth.module.js"></script>
+	<script src="~/app/user-auth/user-auth.component.js"></script>
+	<script src="~/app/user-out/user-out.module.js"></script>
+	<script src="~/app/user-out/user-out.component.js"></script>
+	<script src="~/app/user-regist/user-regist.module.js"></script>
+	<script src="~/app/user-regist/user-regist.component.js"></script>
+	<script src="~/app/monitoring-system.module.js"></script>
+	<script src="~/app/monitoring-system.config.js"></script>
+</body>
+</html>

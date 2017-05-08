@@ -1,41 +1,51 @@
 ﻿(function () {
-    'use strict';
+	'use strict';
 
-    angular
+	angular
 		  .module('core.problem')
         .factory('Problem', problem);
 
-    problem.$inject = ['$http'];
+	problem.$inject = ['$http'];
 
-    function problem($http) {
-        var service = {
-				getAll: getAll,
-				get: get,
-				add: add,
-				edit: edit,
-				remove: remove
-        };
+	function problem($http) {
+		var service = {
+			getOpenProblems: getOpenProblems,
+			getInDevProblems: getInDevProblems,
+			getClosedProblems: getClosedProblems,
+			get: get,
+			add: add,
+			edit: edit,
+			remove: remove
+		};
 
-        return service;
+		return service;
 
-		  function add(problem) {
-				return $http.post('/api/problem', problem);
-		  }
+		function add(problem) {
+			return $http.post('/api/problem', problem);
+		}
 
-		  function getAll() {
-				return $http.get('/api/problem');
-		  }
+		function getOpenProblems() {
+			return $http.get('/api/problem/openProblems');
+		}
 
-		  function edit(id, problem) {
-				return $http.put('/api/problem/' + id, problem);
-		  }
+		function getInDevProblems() {
+			return $http.get('/api/problem/inDevProblems');
+		}
 
-		  function get(id) {
-				return $http.get('/api/problem/' + id);
-		  }
+		function getClosedProblems() {
+			return $http.get('/api/problem/closedProblems');
+		}
 
-		  function remove(id) {
-				return $http.delete('/api/problem/' + id)
-		  }
-    }
+		function edit(id, problem) {
+			return $http.put('/api/problem/' + id, problem);
+		}
+
+		function get(id) {
+			return $http.get('/api/problem/' + id);
+		}
+
+		function remove(id) {
+			return $http.delete('/api/problem/' + id);
+		}
+	}
 })();

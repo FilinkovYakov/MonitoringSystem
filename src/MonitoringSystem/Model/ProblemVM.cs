@@ -11,6 +11,10 @@ namespace MonitoringSystem.Model
 		public string Summary { get; set; }
 		public string Description { get; set; }
 		public string Reporter { get; set; }
+		public int AssigneeId { get; set; }
 		public string Assignee { get; set; }
+		public double EstimatedTime { get; set; }
+		public double RemainingTime { get; set; }
+		public Status Status { get; set; }
 	}
 }

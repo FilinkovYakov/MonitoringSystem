@@ -5,8 +5,8 @@
 		  .module('problemRemove')
 		  .component('problemRemove', {
 				templateUrl: 'app/problem-remove/problem-remove.template.html',
-				controller: ['$location', 'Problem',
-					 function ProblemAddController($location, Problem) {
+				controller: ['$routeParams', '$location', 'Problem',
+					 function ProblemRemoveController($routeParams, $location, Problem) {
 						  /* jshint validthis:true */
 						  var vm = this;
 

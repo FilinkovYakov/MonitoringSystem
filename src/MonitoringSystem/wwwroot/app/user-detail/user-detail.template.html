@@ -1,0 +1,25 @@
+﻿<div class="row">
+	<div class="col-sm-3">
+		<h1>User</h1>
+		<p>
+			<strong>Login:</strong>
+			<span>{{$ctrl.user.login}}</span>
+		</p>
+		<p>
+			<strong>Name:</strong>
+			<span>{{$ctrl.user.name}}</span>
+		</p>
+		<p>
+			<strong>Total estimated time:</strong>
+			<span>{{$ctrl.user.totalEstimatedTime}}</span>
+		</p>
+		<p>
+			<strong>Total remaining time:</strong>
+			<span>{{$ctrl.user.totalRemainingTime}}</span>
+		</p>
+		<a href="#!/users/" class="btn btn-info">Back to users</a>
+	</div>
+	<div class="col-sm-9">
+		<subtask-list-by-user></subtask-list-by-user>
+	</div>
+</div>

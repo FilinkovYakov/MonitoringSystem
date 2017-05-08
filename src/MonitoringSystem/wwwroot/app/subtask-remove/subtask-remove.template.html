@@ -1,0 +1,29 @@
+﻿<div class="col-sm-offset-3 col-sm-6">
+	<h1>Are you want to remove subtask?</h1>
+	<p>
+		<strong>Id:</strong>
+		<span>{{$ctrl.subtask.id}}</span>
+	</p>
+	<p>
+		<strong>Summary:</strong>
+		<span>{{$ctrl.subtask.summary}}</span>
+	</p>
+	<p>
+		<strong>Problem:</strong>
+		<span>{{$ctrl.subtask.problem}}</span>
+	</p>
+	<p>
+		<strong>Description:</strong>
+		<span>{{$ctrl.subtask.description}}</span>
+	</p>
+	<p>
+		<strong>Reporter:</strong>
+		<span>{{$ctrl.subtask.reporter}}</span>
+	</p>
+	<p>
+		<strong>Assignee:</strong>
+		<span>{{$ctrl.subtask.assignee}}</span>
+	</p>
+	<input type="submit" ng-click="$ctrl.remove()" class="btn btn-info" value="Remove" />
+	<a href="#!/problem/{{$ctrl.subtask.problemId}}" class="btn btn-info">Back to problem</a>
+</div>

@@ -1,18 +1,13 @@
-﻿<div>
+﻿<form class="col-sm-offset-2 col-sm-8">
 	<h1>Problem</h1>
-	<p>
-		<span>Summary: </span>
-		<input type="text" ng-model="$ctrl.problem.summary" />
-	</p>
-	<p>
-		<span>Description: </span>
-		<input type="text" ng-model="$ctrl.problem.description"/>
-	</p>
-	<p>
-		<span>Assegnee:</span>
-		<select ng-model="$ctrl.problem.assegneeid" ng-options="user.id as user.name for user in $ctrl.users track by user.id"></select>
-	</p>
-</div>
-
-<input type="submit" ng-click="$ctrl.edit()" class="btn btn-info" value="Edit" />
-<a href="#!/problems/" class="btn btn-info">To list problems</a>
+	<div class="form-group">
+		<label for="summary">Summary:</label>
+		<input type="text" id="summary" class="form-control" ng-model="$ctrl.problem.summary" />
+		<label for="description">Description:</label>
+		<textarea id="description" rows="3" class="form-control" ng-model="$ctrl.problem.description"></textarea>
+		<label for="assignee">Assignee:</label>
+		<select ng-model="$ctrl.problem.assignee" id="assignee" class="form-control" ng-options="user as user.name for user in $ctrl.users track by user.id"></select>
+	</div>
+	<input type="submit" ng-click="$ctrl.edit()" class="btn btn-info" value="Edit" />
+	<a href="#!/problems/" class="btn btn-info">To list problems</a>
+</form>

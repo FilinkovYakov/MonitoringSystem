@@ -1,13 +1,13 @@
 ﻿(function () {
-    'use strict';
+	'use strict';
 
-    angular.module('problemDetail', [
+	angular.module('problemDetail', [
         // Angular modules 
         'ngRoute',
-		  'core.problem',
+		  'core.problem'
         // Custom modules 
 
         // 3rd Party Modules
 
-    ]);
+	]);
 })();

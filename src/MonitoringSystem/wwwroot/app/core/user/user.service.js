@@ -1,46 +1,46 @@
 ﻿(function () {
-    'use strict';
+	'use strict';
 
-    angular
+	angular
         .module('core.user')
         .factory('User', user);
 
-    user.$inject = ['$http'];
+	user.$inject = ['$http'];
 
-    function user($http) {
-        var service = {
-				auth: auth,
-				regist: regist,
-				isAuth: isAuth,
-				out: out,
-				get: get,
-				getAll: getAll
-        };
+	function user($http) {
+		var service = {
+			auth: auth,
+			regist: regist,
+			isAuth: isAuth,
+			out: out,
+			get: get,
+			getAll: getAll
+		};
 
-        return service;
+		return service;
 
-		  function out() {
-				return $http.delete('/api/auth');
-		  }
+		function out() {
+			return $http.delete('/api/auth');
+		}
 
-		  function auth(user) {
-				return $http.post('/api/auth', user);
-		  }
+		function auth(user) {
+			return $http.post('/api/auth', user);
+		}
 
-		  function get(id) {
-				return $http.get('/api/user', id);
-		  }
+		function get(id) {
+			return $http.get('/api/user/' + id);
+		}
 
-		  function getAll() {
-				return $http.get('/api/user');
-		  }
-		  
-		  function isAuth() {
-				return $http.get('/api/auth');
-		  }
+		function getAll() {
+			return $http.get('/api/user');
+		}
 
-		  function regist(user) {
-				return $http.post('/api/user', user);
-		  }
-    }
+		function isAuth() {
+			return $http.get('/api/auth');
+		}
+
+		function regist(user) {
+			return $http.post('/api/user', user);
+		}
+	}
 })();

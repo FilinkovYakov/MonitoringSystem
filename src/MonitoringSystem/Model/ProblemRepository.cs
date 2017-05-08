@@ -10,7 +10,7 @@ namespace MonitoringSystem.Model
 	{
 		private static ProblemRepository _singelton;
 		private List<Problem> _rep;
-		private int couter;
+		private int counter;
 
 		private ProblemRepository()
 		{
@@ -22,7 +22,7 @@ namespace MonitoringSystem.Model
 					Summary = "Summary task 1",
 					Description = "Description task 1",
 					ReporterId = 1,
-					AssegneeId = 1
+					AssigneeId = 1
 				},
 				new Problem()
 				{
@@ -30,11 +30,11 @@ namespace MonitoringSystem.Model
 					Summary = "Summary task 1",
 					Description = "Description task 1",
 					ReporterId = 1,
-					AssegneeId = 1
+					AssigneeId = 1
 				}
 			};
 
-			couter = _rep.Count;
+			counter = _rep.Count;
 		}
 
 		public static ProblemRepository Instance() 
@@ -49,8 +49,8 @@ namespace MonitoringSystem.Model
 
 		public void Add(Problem problem)
 		{
-			couter++;
-			problem.Id = couter;
+			counter++;
+			problem.Id = counter;
 			_rep.Add(problem);
 		}
 
@@ -70,6 +70,12 @@ namespace MonitoringSystem.Model
 			{
 				yield return problem;
 			}
+		}
+
+		public IEnumerable<Problem> GetByStatus(Status status)
+		{
+			return _rep.Where(problem => problem.Status == status);
+			;
 		}
 	}
 }

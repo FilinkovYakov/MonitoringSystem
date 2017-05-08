@@ -5,7 +5,7 @@
   "main": "./angular-route.js",
   "ignore": [],
   "dependencies": {
-    "angular": "1.6.4"
+    "angular": "1.6.2"
   },
   "homepage": "https://github.com/angular/bower-angular-route",
   "_release": "1.6.2",

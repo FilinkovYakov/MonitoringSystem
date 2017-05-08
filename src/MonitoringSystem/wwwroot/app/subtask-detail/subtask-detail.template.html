@@ -1,0 +1,36 @@
+﻿<div class="col-sm-offset-3 col-sm-6">
+	<h1>Subtask:</h1>
+	<p>
+		<strong>Id:</strong>
+		<span>{{$ctrl.subtask.id}}</span>
+	</p>
+	<p>
+		<strong>Problem:</strong>
+		<a href="#!/problem/{{$ctrl.subtask.problemId}}">{{$ctrl.subtask.problem}}</a>
+	</p>
+	<p>
+		<strong>Summary:</strong>
+		<span>{{$ctrl.subtask.summary}}</span>
+	</p>
+	<p>
+		<strong>Description:</strong>
+		<span>{{$ctrl.subtask.description}}</span>
+	</p>
+	<p>
+		<strong>Reporter:</strong>
+		<span>{{$ctrl.subtask.reporter}}</span>
+	</p>
+	<p>
+		<strong>Assignee:</strong>
+		<span>{{$ctrl.subtask.assignee}}</span>
+	</p>
+	<p>
+		<strong>Estimated time (hours):</strong>
+		<span>{{$ctrl.subtask.estimatedTime}}</span>
+	</p>
+	<p>
+		<strong>Remaining time (hours): </strong>
+		<span>{{$ctrl.subtask.remainingTime}}</span>
+	</p>
+	<a href="#!/problem/{{$ctrl.subtask.problemId}}" class="btn btn-info">Back to problem</a>
+</div>

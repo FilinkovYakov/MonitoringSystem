@@ -5,10 +5,12 @@ using System.Threading.Tasks;
 
 namespace MonitoringSystem.Model
 {
-    public class UserVM
-    {
+	public class UserVM
+	{
 		public int Id { get; set; }
 		public string Name { get; set; }
 		public string Login { get; set; }
+		public double TotalEstimatedTime { get; set; }
+		public double TotalRemainingTime { get; set; }
 	}
 }

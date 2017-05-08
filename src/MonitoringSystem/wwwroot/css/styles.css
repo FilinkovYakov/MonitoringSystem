@@ -1,0 +1,21 @@
+﻿body {
+	background-color: #eee;
+}
+
+section {
+	background-color: white;
+	border-radius: 3px;
+	padding: 20px;
+}
+
+h1 {
+	font-size: 28px;
+}
+
+textarea {
+    resize: none;
+}
+
+td, th {
+	text-align: center;
+}

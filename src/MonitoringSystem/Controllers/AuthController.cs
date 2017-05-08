@@ -6,8 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using MonitoringSystem.Model;
 using Microsoft.AspNetCore.Http.Authentication;
-
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+using MonitoringSystem.Hashcomputer;
 
 namespace MonitoringSystem.Controllers
 {
@@ -35,7 +34,7 @@ namespace MonitoringSystem.Controllers
 			User userDB = _rep.GetByLogin(user.Login);
 			if (userDB != null)
 			{
-				if (userDB.Password.CompareTo(user.Password) == 0)
+				if (string.Compare(userDB.Password, HashcomputerSHA512.GetHash(user.Password), StringComparison.Ordinal) == 0)
 				{
 					await Authenticate(user.Login);
 					return "Success";
@@ -63,17 +62,5 @@ namespace MonitoringSystem.Controllers
 				ExpiresUtc = DateTime.UtcNow.AddMinutes(20)
 			});
 		}
-
-		// PUT api/values/5
-		[HttpPut("{id}")]
-		public void Put(int id, [FromBody]string value)
-		{
-		}
-
-		// DELETE api/values/5
-		//[HttpDelete("{id}")]
-		//public void Delete(int id)
-		//{
-		//}
 	}
 }

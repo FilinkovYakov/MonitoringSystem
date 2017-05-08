@@ -1,20 +1,39 @@
-﻿<div>
-	<h1>Problem</h1>
-	<p>
-		Id: {{$ctrl.problem.id}}
-	</p>
-	<p>
-		Summary: {{$ctrl.problem.summary}}
-	</p>
-	<p>
-		Description: {{$ctrl.problem.description}}
-	</p>
-	<p>
-		Reporter: {{$ctrl.problem.reporter}}
-	</p>
-	<p>
-		Assignee: {{$ctrl.problem.assignee}}
-	</p>
+﻿<div class="row">
+	<div class="col-sm-3">
+		<p>
+			<h1>Problem</h1>
+			<a href="#!/problems/" class="btn btn-info">To list problems</a>
+		</p>
+		<p>
+			<strong>Id:</strong>
+			<span>{{$ctrl.problem.id}}</span>
+		</p>
+		<p>
+			<strong>Summary:</strong>
+			<span>{{$ctrl.problem.summary}}</span>
+		</p>
+		<p>
+			<strong>Description:</strong>
+			<span>{{$ctrl.problem.description}}</span>
+		</p>
+		<p>
+			<strong>Reporter:</strong>
+			<span>{{$ctrl.problem.reporter}}</span>
+		</p>
+		<p>
+			<strong>Assignee:</strong>
+			<span>{{$ctrl.problem.assignee}}</span>
+		</p>
+		<p>
+			<strong>Estimated time (hours):</strong>
+			<span>{{$ctrl.problem.estimatedTime}}</span>
+		</p>
+		<p>
+			<strong>Remaining time (hours):</strong>
+			<span>{{$ctrl.problem.remainingTime}}</span>
+		</p>
+	</div>
+	<div class="col-sm-9">
+		<subtask-list-by-problem></subtask-list-by-problem>
+	</div>
 </div>
-
-<a href="#!/problems/" class="btn btn-info">To list problems</a>

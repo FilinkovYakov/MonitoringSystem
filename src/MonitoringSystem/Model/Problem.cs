@@ -11,6 +11,7 @@ namespace MonitoringSystem.Model
 		public string Summary { get; set; }
 		public string Description { get; set; }
 		public int ReporterId { get; set; }
-		public int AssegneeId { get; set; }
+		public int AssigneeId { get; set; }
+		public Status Status { get; set; }
 	}
 }

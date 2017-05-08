@@ -1,8 +1,5 @@
-﻿
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MonitoringSystem.Model;
 using Microsoft.AspNetCore.Authorization;
@@ -15,13 +12,38 @@ namespace MonitoringSystem.Controllers
 	{
 		ProblemRepository _problemRep = ProblemRepository.Instance();
 		UserRepository _userRep = UserRepository.Instance();
+		SubtaskRepository _subtaskRep = SubtaskRepository.Instance();
 
 		// GET api/values
-		[HttpGet]
-		public IEnumerable<ProblemVM> Get()
+		[HttpGet("openProblems")]
+		public IEnumerable<ProblemVM> GetOpenProblems()
 		{
 			IList<ProblemVM> problemsVM = new List<ProblemVM>();
-			foreach (var problem in _problemRep.GetAll())
+			foreach (var problem in _problemRep.GetByStatus(Status.Open))
+			{
+				problemsVM.Add(ConvertToProblemVM(problem));
+			}
+
+			return problemsVM;
+		}
+
+		[HttpGet("inDevProblems")]
+		public IEnumerable<ProblemVM> GetInDevProblems()
+		{
+			IList<ProblemVM> problemsVM = new List<ProblemVM>();
+			foreach (var problem in _problemRep.GetByStatus(Status.InDev))
+			{
+				problemsVM.Add(ConvertToProblemVM(problem));
+			}
+
+			return problemsVM;
+		}
+
+		[HttpGet("closedProblems")]
+		public IEnumerable<ProblemVM> GetClosedProblems()
+		{
+			IList<ProblemVM> problemsVM = new List<ProblemVM>();
+			foreach (var problem in _problemRep.GetByStatus(Status.Open))
 			{
 				problemsVM.Add(ConvertToProblemVM(problem));
 			}
@@ -41,6 +63,7 @@ namespace MonitoringSystem.Controllers
 		public void Post([FromBody]Problem value)
 		{
 			value.ReporterId = _userRep.GetByLogin(User.Identity.Name).Id;
+			value.Status = Status.Open;
 			_problemRep.Add(value);
 		}
 
@@ -48,10 +71,36 @@ namespace MonitoringSystem.Controllers
 		[HttpPut("{id}")]
 		public void Put(int id, [FromBody]Problem value)
 		{
-			Problem problem  = _problemRep.Get(id);
+			Problem problem = _problemRep.Get(id);
 			problem.Summary = value.Summary;
 			problem.Description = value.Description;
-			problem.AssegneeId = value.AssegneeId;
+			problem.AssigneeId = value.AssigneeId;
+			problem.Status = value.Status;
+		}
+
+		[HttpPut("changeStatus/{id}")]
+		public void ChangeStatus(int id)
+		{
+			Problem problem = _problemRep.Get(id);
+			switch (problem.Status)
+			{
+				case Status.Open:
+					{
+						problem.Status = Status.InDev;
+						break;
+					}
+				case Status.InDev:
+					{
+						problem.Status = Status.Closed;
+						break;
+					}
+				case Status.Closed:
+					{
+						problem.Status = Status.Open;
+						break;
+					}
+				default: { break; }
+			}
 		}
 
 		// DELETE api/values/5
@@ -59,9 +108,10 @@ namespace MonitoringSystem.Controllers
 		public void Delete(int id)
 		{
 			_problemRep.Delete(id);
+			_subtaskRep.DeleteByProblemId(id);
 		}
 
-		public ProblemVM ConvertToProblemVM(Problem problem) 
+		private ProblemVM ConvertToProblemVM(Problem problem)
 		{
 			return new ProblemVM()
 			{
@@ -69,7 +119,11 @@ namespace MonitoringSystem.Controllers
 				Summary = problem.Summary,
 				Description = problem.Description,
 				Reporter = _userRep.GetById(problem.ReporterId).Name,
-				Assignee = _userRep.GetById(problem.AssegneeId).Name
+				AssigneeId = problem.AssigneeId,
+				Assignee = _userRep.GetById(problem.AssigneeId).Name,
+				RemainingTime = _subtaskRep.GetByProblemId(problem.Id).Sum(subtask => subtask.RemainingTime),
+				EstimatedTime = _subtaskRep.GetByProblemId(problem.Id).Sum(subtask => subtask.EstimatedTime),
+				Status = problem.Status
 			};
 		}
 	}

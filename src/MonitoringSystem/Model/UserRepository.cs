@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MonitoringSystem.Hashcomputer;
 
 namespace MonitoringSystem.Model
 {
     public class UserRepository
-    {
+	{
 		private static UserRepository _singelton;
 		private List<User> _rep;
-		private int couter;
+		private int counter;
 
 		private UserRepository()
 		{
@@ -20,11 +21,18 @@ namespace MonitoringSystem.Model
 					Id = 1,
 					Name = "admin",
 					Login = "admin",
-					Password = "admin"
+					Password = HashcomputerSHA512.GetHash("admin")
+				},
+				new User()
+				{
+					Id = 2,
+					Name = "vasya",
+					Login = "vasya",
+					Password = HashcomputerSHA512.GetHash("vasya")
 				}
 			};
 
-			couter = _rep.Count;
+			counter = _rep.Count;
 		}
 
 		public static UserRepository Instance()
@@ -39,8 +47,8 @@ namespace MonitoringSystem.Model
 
 		public void Add(User user)
 		{
-			couter++;
-			user.Id = couter;
+			counter++;
+			user.Id = counter;
 			_rep.Add(user);
 		}
 

@@ -1,17 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MonitoringSystem.Model;
 using Microsoft.AspNetCore.Authorization;
+using MonitoringSystem.Hashcomputer;
 
 namespace MonitoringSystem.Controllers
 {
 	[Route("api/[controller]")]
 	public class UserController : Controller
 	{
-		UserRepository _rep = UserRepository.Instance();
+		UserRepository _userRep = UserRepository.Instance();
+		SubtaskRepository _subtaskRep = SubtaskRepository.Instance();
+		SHA512 hashCreater = SHA512.Create();
 
 		// GET: api/values
 		[HttpGet]
@@ -19,7 +23,7 @@ namespace MonitoringSystem.Controllers
 		public IEnumerable<UserVM> GetAll()
 		{
 			IList<UserVM> usersVM = new List<UserVM>();
-			foreach (var problem in _rep.GetAll())
+			foreach (var problem in _userRep.GetAll())
 			{
 				usersVM.Add(ConvertToUserVM(problem));
 			}
@@ -32,16 +36,17 @@ namespace MonitoringSystem.Controllers
 		[Authorize]
 		public UserVM Get(int id)
 		{
-			return ConvertToUserVM(_rep.GetById(id));
+			return ConvertToUserVM(_userRep.GetById(id));
 		}
 
 		// POST api/values
 		[HttpPost]
 		public string Registration([FromBody]User user)
 		{
-			if(_rep.GetByLogin(user.Login) == null) 
+			if (_userRep.GetByLogin(user.Login) == null)
 			{
-				_rep.Add(user);
+				user.Password = HashcomputerSHA512.GetHash(user.Password);
+				_userRep.Add(user);
 				return "Success";
 			}
 
@@ -54,19 +59,15 @@ namespace MonitoringSystem.Controllers
 		{
 		}
 
-		// DELETE api/values/5
-		[HttpDelete("{id}")]
-		public void Delete(int id)
-		{
-		}
-
-		public UserVM ConvertToUserVM(User user)
+		private UserVM ConvertToUserVM(User user)
 		{
 			return new UserVM()
 			{
 				Id = user.Id,
 				Login = user.Login,
-				Name = user.Name
+				Name = user.Name,
+				TotalRemainingTime = _subtaskRep.GetAll().Where(subtask => subtask.AssigneeId == user.Id).Sum(subtask => subtask.RemainingTime),
+				TotalEstimatedTime = _subtaskRep.GetAll().Where(subtask => subtask.AssigneeId == user.Id).Sum(subtask => subtask.EstimatedTime)
 			};
 		}
 	}

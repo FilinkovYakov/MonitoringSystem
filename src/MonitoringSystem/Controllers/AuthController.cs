@@ -29,21 +29,25 @@ namespace MonitoringSystem.Controllers
 
 		// POST api/values
 		[HttpPost]
-		public async Task<string> SignInAsync([FromBody]AuthUser user)
+		public async Task<Result<AuthUserErrors>> SignInAsync([FromBody]AuthUser user)
 		{
 			User userDB = _rep.GetByLogin(user.Login);
+			Result<AuthUserErrors> results = new Result<AuthUserErrors>();
 			if (userDB != null)
 			{
 				if (string.Compare(userDB.Password, HashcomputerSHA512.GetHash(user.Password), StringComparison.Ordinal) == 0)
 				{
 					await Authenticate(user.Login);
-					return "Success";
+					results.IsSuccess = true;
+					return results;
 				}
 
-				return "Password is invalid";
+				results.Errors.PasswordError = "Password is invalid";
+				return results;
 			}
 
-			return "Login is invalid";
+			results.Errors.LoginError = "Login is invalid";
+			return results;
 		}
 
 		private async Task Authenticate(string login)

@@ -9,6 +9,9 @@
 					 when('/auth', {
 					 	template: '<user-auth></user-auth>'
 					 }).
+					 when('/isAuth', {
+					 	template: '<user-is-auth></user-is-auth>'
+					 }).
 					 when('/user', {
 					 	template: '<user-regist></user-regist>'
 					 }).
@@ -18,8 +21,14 @@
 					 when('/user/:id', {
 					 	template: '<user-detail></user-detail>'
 					 }).
-					 when('/problems', {
-					 	template: '<problem-list></problem-list>'
+					 when('/openProblems', {
+					 	template: '<problem-open-list></problem-open-list>'
+					 }).
+					 when('/inDevProblems', {
+					 	template: '<problem-in-dev-list></problem-in-dev-list>'
+					 }).
+					 when('/closedProblems', {
+					 	template: '<problem-closed-list></problem-closed-list>'
 					 }).
 					 when('/problem/add', {
 					 	template: '<problem-add></problem-add>'
@@ -45,11 +54,11 @@
 					 when('/subtask/remove/:id', {
 					 	template: '<subtask-remove></subtask-remove>'
 					 }).
-					 otherwise({ redirectTo: '/auth' });
+					 otherwise({ redirectTo: '/isAuth' });
 			   }
 		 ])
 		 .run(['$rootScope', '$location', 'User', function ($rootScope, $location, User) {
-		 	$rootScope.$on('$locationChangeStart', function (event, next, current) {
+		 	$rootScope.$on('$locationChangeSuccess', function (event, next, current) {
 		 		var isAuth = false;
 		 		User.isAuth().then(function (response) {
 		 			isAuth = response.data === true;

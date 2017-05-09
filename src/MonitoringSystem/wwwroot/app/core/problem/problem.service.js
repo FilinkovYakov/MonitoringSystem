@@ -15,6 +15,7 @@
 			get: get,
 			add: add,
 			edit: edit,
+			changeStatus: changeStatus,
 			remove: remove
 		};
 
@@ -38,6 +39,10 @@
 
 		function edit(id, problem) {
 			return $http.put('/api/problem/' + id, problem);
+		}
+
+		function changeStatus(id) {
+			return $http.put('/api/problem/changeStatus/' + id);
 		}
 
 		function get(id) {

@@ -9,11 +9,12 @@
 			function SubtaskListByProblemController($routeParams, Subtask) {
 		  		/* jshint validthis:true */
 				var vm = this;
+				vm.problemId = $routeParams.id;
 
 		  		activate();
 
 		  		function activate() {
-		  			Subtask.getByProblemId($routeParams.id).then(function (response) {
+		  			Subtask.getByProblemId(vm.problemId).then(function (response) {
 		  				vm.subtasks = response.data;
 		  			});
 		  		}

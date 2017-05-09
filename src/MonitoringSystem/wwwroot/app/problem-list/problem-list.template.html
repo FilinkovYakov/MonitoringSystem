@@ -20,7 +20,7 @@
 			<td>{{problem.estimatedTime}}</td>
 			<td>{{problem.remainingTime}}</td>
 			<td>
-				<a href="#" ng-click="$ctrl.changeStatus()" class="btn btn-default">
+				<a href="#" ng-click="$ctrl.changeStatus(problem.id)" class="btn btn-default">
 					<span class="glyphicon glyphicon-upload" aria-hidden="true"></span>
 				</a>
 				<a href="#!/problem/{{problem.id}}" class="btn btn-default">

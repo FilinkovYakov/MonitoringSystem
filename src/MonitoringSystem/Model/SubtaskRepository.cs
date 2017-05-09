@@ -22,7 +22,9 @@ namespace MonitoringSystem.Model
 					Summary = "Summary task 1",
 					Description = "Description task 1",
 					ReporterId = 1,
-					AssigneeId = 1
+					AssigneeId = 1,
+					EstimatedTime = 3,
+					RemainingTime = 3
 				},
 				new Subtask()
 				{
@@ -31,7 +33,9 @@ namespace MonitoringSystem.Model
 					Summary = "Summary task 1",
 					Description = "Description task 1",
 					ReporterId = 1,
-					AssigneeId = 1
+					AssigneeId = 1,
+					EstimatedTime = 3,
+					RemainingTime = 2
 				}
 			};
 

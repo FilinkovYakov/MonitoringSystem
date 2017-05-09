@@ -52,8 +52,7 @@ namespace MonitoringSystem
 			app.UseCookieAuthentication(new CookieAuthenticationOptions
 			{
 				AuthenticationScheme = "Cookies",
-				LoginPath = new PathString("/auth"),
-				AccessDeniedPath = new PathString("/auth"),
+				LoginPath = new PathString("/isAuth"),
 				AutomaticAuthenticate = true,
 				AutomaticChallenge = true,
 			});

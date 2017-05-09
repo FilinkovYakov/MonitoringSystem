@@ -22,7 +22,8 @@ namespace MonitoringSystem.Model
 					Summary = "Summary task 1",
 					Description = "Description task 1",
 					ReporterId = 1,
-					AssigneeId = 1
+					AssigneeId = 1,
+					Status = Status.Open,
 				},
 				new Problem()
 				{
@@ -30,7 +31,8 @@ namespace MonitoringSystem.Model
 					Summary = "Summary task 1",
 					Description = "Description task 1",
 					ReporterId = 1,
-					AssigneeId = 1
+					AssigneeId = 1,
+					Status = Status.Open,
 				}
 			};
 
@@ -75,7 +77,6 @@ namespace MonitoringSystem.Model
 		public IEnumerable<Problem> GetByStatus(Status status)
 		{
 			return _rep.Where(problem => problem.Status == status);
-			;
 		}
 	}
 }

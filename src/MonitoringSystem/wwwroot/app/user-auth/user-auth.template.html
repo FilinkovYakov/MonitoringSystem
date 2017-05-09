@@ -1,11 +1,16 @@
 ﻿<form class="col-sm-offset-2 col-sm-8">
 	<h1>Please, sign in</h1>
 	<div class="form-group">
-		<label for="login">Login:</label>
-		<input type="text" id="login" class="form-control" ng-model="$ctrl.user.login" />
-		<label for="password">Password:</label>
-		<input type="password" id="password" class="form-control" ng-model="$ctrl.user.password" />
-		<span class="alert-danger">{{$ctrl.error}}</span>
+		<div>
+			<label for="login">Login:</label>
+			<input type="text" id="login" class="form-control" ng-model="$ctrl.user.login" />
+			<span class="alert-danger">{{$ctrl.errors.login}}</span>
+		</div>
+		<div>
+			<label for="password">Password:</label>
+			<input type="password" id="password" class="form-control" ng-model="$ctrl.user.password" />
+			<span class="alert-danger">{{$ctrl.errors.password}}</span>
+		</div>
 	</div>
 	<input type="submit" ng-click="$ctrl.auth()" class="btn btn-info" value="Sign In" />
 	<a href="#!/user" class="btn btn-info">Registration</a>

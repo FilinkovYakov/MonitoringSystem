@@ -1,16 +1,30 @@
 ﻿<form class="col-sm-offset-2 col-sm-8">
-	<h1>Subtask:</h1>
+	<h1>Add subtask</h1>
 	<div class="form-group">
-		<label for="summary">Summary:</label>
-		<input type="text" id="summary" class="form-control" ng-model="$ctrl.subtask.summary" />
-		<label for="description">Description: </label>
-		<textarea id="description" rows="3" class="form-control" ng-model="$ctrl.subtask.description"></textarea>
-		<label for="assignee">Assegnee:</label>
-		<select ng-model="$ctrl.subtask.assignee" id="assignee" class="form-control" ng-options="user as user.name for user in $ctrl.users track by user.id"></select>
-		<label for="estimatedTime">Estimated time (hours):</label>
-		<input type="number" min="0" id="estimatedTime" class="form-control" ng-model="$ctrl.subtask.estimatedTime" />
-		<label for="remainingTime">Remaining time (hours):</label>
-		<input type="number" min="0" id="remainingTime" class="form-control" ng-model="$ctrl.subtask.remainingTime" />
+		<div>
+			<label for="summary">Summary:</label>
+			<input type="text" id="summary" class="form-control" ng-model="$ctrl.subtask.summary" />
+			<span class="alert-danger">{{$ctrl.errors.summary}}</span>
+		</div>
+		<div>
+			<label for="description">Description: </label>
+			<textarea id="description" rows="3" class="form-control" ng-model="$ctrl.subtask.description"></textarea>
+			<span class="alert-danger">{{$ctrl.errors.description}}</span>
+		</div>
+		<div>
+			<label for="assignee">Assegnee:</label>
+			<select ng-model="$ctrl.subtask.assignee" id="assignee" class="form-control" ng-options="user as user.name for user in $ctrl.users track by user.id"></select>
+		</div>
+		<div>
+			<label for="estimatedTime">Estimated time (hours):</label>
+			<input type="number" min="0" id="estimatedTime" class="form-control" ng-model="$ctrl.subtask.estimatedTime" />
+			<span class="alert-danger">{{$ctrl.errors.estimatedTime}}</span>
+		</div>
+		<div>
+			<label for="remainingTime">Remaining time (hours):</label>
+			<input type="number" min="0" id="remainingTime" class="form-control" ng-model="$ctrl.subtask.remainingTime" />
+			<span class="alert-danger">{{$ctrl.errors.remainingTime}}</span>
+		</div>
 	</div>
 	<input type="submit" ng-click="$ctrl.add()" class="btn btn-info" value="Create" />
 	<a href="#!/problem/{{$ctrl.problemId}}" class="btn btn-info">Back to problem</a>

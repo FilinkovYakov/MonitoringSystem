@@ -5,18 +5,25 @@
 		 .module('problemClosedList')
 		 .component('problemClosedList', {
 		 	templateUrl: 'app/problem-list/problem-list.template.html',
-		 	controller: ['Problem', function ProblemInDevListController(Problem) {
-		 		/* jshint validthis:true */
-		 		var vm = this;
-		 		vm.title = "Closed problems";
+		 	controller: ['$location', 'Problem',
+			function ProblemInDevListController($location, Problem) {
+				/* jshint validthis:true */
+				var vm = this;
+				vm.title = "Closed problems";
 
-		 		activate();
+				vm.changeStatus = function changeStatus(id) {
+					Problem.changeStatus(id).then(function (response) {
+						$location.path('/openProblems');
+					});
+				};
 
-		 		function activate() {
-		 			Problem.getClosedProblems().then(function (response) {
-		 				vm.problems = response.data;
-		 			});
-		 		}
-		 	}]
+				activate();
+
+				function activate() {
+					Problem.getClosedProblems().then(function (response) {
+						vm.problems = response.data;
+					});
+				}
+			}]
 		 });
 })();

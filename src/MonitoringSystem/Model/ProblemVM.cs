@@ -15,6 +15,6 @@ namespace MonitoringSystem.Model
 		public string Assignee { get; set; }
 		public double EstimatedTime { get; set; }
 		public double RemainingTime { get; set; }
-		public Status Status { get; set; }
+		public string Status { get; set; }
 	}
 }

@@ -43,7 +43,7 @@ namespace MonitoringSystem.Controllers
 		public IEnumerable<ProblemVM> GetClosedProblems()
 		{
 			IList<ProblemVM> problemsVM = new List<ProblemVM>();
-			foreach (var problem in _problemRep.GetByStatus(Status.Open))
+			foreach (var problem in _problemRep.GetByStatus(Status.Closed))
 			{
 				problemsVM.Add(ConvertToProblemVM(problem));
 			}
@@ -92,11 +92,13 @@ namespace MonitoringSystem.Controllers
 				case Status.InDev:
 					{
 						problem.Status = Status.Closed;
+						CloseSubtasks(_subtaskRep.GetByProblemId(problem.Id));
 						break;
 					}
 				case Status.Closed:
 					{
 						problem.Status = Status.Open;
+						CloseSubtasks(_subtaskRep.GetByProblemId(problem.Id));
 						break;
 					}
 				default: { break; }
@@ -111,6 +113,14 @@ namespace MonitoringSystem.Controllers
 			_subtaskRep.DeleteByProblemId(id);
 		}
 
+		private void CloseSubtasks(IEnumerable<Subtask> list)
+		{
+			foreach (var subtask in list)
+			{
+				subtask.RemainingTime = 0;
+			}
+		}
+
 		private ProblemVM ConvertToProblemVM(Problem problem)
 		{
 			return new ProblemVM()
@@ -123,7 +133,7 @@ namespace MonitoringSystem.Controllers
 				Assignee = _userRep.GetById(problem.AssigneeId).Name,
 				RemainingTime = _subtaskRep.GetByProblemId(problem.Id).Sum(subtask => subtask.RemainingTime),
 				EstimatedTime = _subtaskRep.GetByProblemId(problem.Id).Sum(subtask => subtask.EstimatedTime),
-				Status = problem.Status
+				Status = problem.Status.ToString()
 			};
 		}
 	}

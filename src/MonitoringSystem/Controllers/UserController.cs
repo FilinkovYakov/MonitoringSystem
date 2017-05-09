@@ -15,7 +15,6 @@ namespace MonitoringSystem.Controllers
 	{
 		UserRepository _userRep = UserRepository.Instance();
 		SubtaskRepository _subtaskRep = SubtaskRepository.Instance();
-		SHA512 hashCreater = SHA512.Create();
 
 		// GET: api/values
 		[HttpGet]
@@ -41,22 +40,19 @@ namespace MonitoringSystem.Controllers
 
 		// POST api/values
 		[HttpPost]
-		public string Registration([FromBody]User user)
+		public Result<UserErrors> Registration([FromBody]User user)
 		{
+			Result<UserErrors> results = new Result<UserErrors>();
 			if (_userRep.GetByLogin(user.Login) == null)
 			{
 				user.Password = HashcomputerSHA512.GetHash(user.Password);
 				_userRep.Add(user);
-				return "Success";
+				results.IsSuccess = true;
+				return results;
 			}
 
-			return "Login have used";
-		}
-
-		// PUT api/values/5
-		[HttpPut("{id}")]
-		public void Put(int id, [FromBody]string value)
-		{
+			results.Errors.LoginError = "Login have used";
+			return results;
 		}
 
 		private UserVM ConvertToUserVM(User user)

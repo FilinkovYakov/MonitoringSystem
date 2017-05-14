@@ -28,8 +28,8 @@ namespace MonitoringSystem.Model
 				new Problem()
 				{
 					Id = 2,
-					Summary = "Summary task 1",
-					Description = "Description task 1",
+					Summary = "Summary task 2",
+					Description = "Description task 2",
 					ReporterId = 1,
 					AssigneeId = 1,
 					Status = Status.Open,

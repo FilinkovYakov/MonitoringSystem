@@ -19,8 +19,8 @@ namespace MonitoringSystem.Model
 				{
 					Id = 1,
 					ProblemId = 1,
-					Summary = "Summary task 1",
-					Description = "Description task 1",
+					Summary = "Summary subtask 1",
+					Description = "Description subtask 1",
 					ReporterId = 1,
 					AssigneeId = 1,
 					EstimatedTime = 3,
@@ -30,8 +30,8 @@ namespace MonitoringSystem.Model
 				{
 					Id = 2,
 					ProblemId = 1,
-					Summary = "Summary task 1",
-					Description = "Description task 1",
+					Summary = "Summary subtask 2",
+					Description = "Description subtask 2",
 					ReporterId = 1,
 					AssigneeId = 1,
 					EstimatedTime = 3,

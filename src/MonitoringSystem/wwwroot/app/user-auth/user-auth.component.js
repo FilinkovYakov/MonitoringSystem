@@ -5,7 +5,7 @@
 		 .module('userAuth')
 		 .component('userAuth', {
 		 	templateUrl: 'app/user-auth/user-auth.template.html',
-		 	controller: ['$location', 'User', function ProblemListController($location, User) {
+		 	controller: ['$location', 'User', function UserListController($location, User) {
 		 		/* jshint validthis:true */
 		 		var vm = this;
 		 		vm.errors = {};
@@ -39,14 +39,14 @@
 
 					 if (vm.user) {
 						 if (!vm.user.login) {
-							 vm.errors.login = "Login is require";
+							 vm.errors.login = "Login is required";
 							 isvalid = false;
 						 } else {
 						 	vm.errors.login = "";
 						 }
 
 						 if (!vm.user.password) {
-							 vm.errors.password = "Password is require";
+							 vm.errors.password = "Password is required";
 							 isvalid = false;
 						 } else {
 						 	vm.errors.password = "";
@@ -55,8 +55,8 @@
 						 return isvalid;
 					 }
 
-					 vm.errors.login = "Login is require";
-					 vm.errors.password = "Password is require";
+					 vm.errors.login = "Login is required";
+					 vm.errors.password = "Password is required";
 					 return false;
 				 }
 		 	}]

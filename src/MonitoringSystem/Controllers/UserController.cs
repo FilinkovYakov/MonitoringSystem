@@ -62,8 +62,7 @@ namespace MonitoringSystem.Controllers
 				Id = user.Id,
 				Login = user.Login,
 				Name = user.Name,
-				TotalRemainingTime = _subtaskRep.GetAll().Where(subtask => subtask.AssigneeId == user.Id).Sum(subtask => subtask.RemainingTime),
-				TotalEstimatedTime = _subtaskRep.GetAll().Where(subtask => subtask.AssigneeId == user.Id).Sum(subtask => subtask.EstimatedTime)
+				TotalRemainingTime = _subtaskRep.GetAll().Where(subtask => subtask.AssigneeId == user.Id).Sum(subtask => subtask.RemainingTime)
 			};
 		}
 	}

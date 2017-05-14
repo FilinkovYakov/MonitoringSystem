@@ -62,9 +62,9 @@
 				 			return isvalid;
 				 		}
 
-				 		vm.errors.name = "Name is require";
-				 		vm.errors.login = "Login is require";
-				 		vm.errors.password = "Password is require";
+				 		vm.errors.name = "Name is required";
+				 		vm.errors.login = "Login is required";
+				 		vm.errors.password = "Password is required";
 				 		return false;
 				 	}
 				 }]

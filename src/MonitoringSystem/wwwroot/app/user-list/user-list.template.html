@@ -4,14 +4,12 @@
 		<tr>
 			<th>Login</th>
 			<th>Name</th>
-			<th>Total estimated time (hours)</th>
 			<th>Total remaining time (hours)</th>
 			<th>Actions</th>
 		</tr>
 		<tr ng-repeat="user in $ctrl.users">
 			<td>{{user.login}}</td>
 			<td>{{user.name}}</td>
-			<td>{{user.totalEstimatedTime}}</td>
 			<td>{{user.totalRemainingTime}}</td>
 			<td>
 				<a href="#!/user/{{user.id}}" class="btn btn-default">
